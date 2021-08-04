@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->longText('description')->nullable();
             $table->string('image_url')->nullable();
-            $table->foreignId('author');
+            $table->foreignId('author_id');
             $table->foreignId('publisher_id');
             $table->double('rating')->default(0);
             $table->integer('stock')->default(0);
