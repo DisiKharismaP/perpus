@@ -27,6 +27,7 @@ class BookController extends Controller
             $book-> rating = $data['rating'];
             $book-> stock = $data['stock'];
 
+            //buat save ke database
             $book->save();
             $status = 'success';
             return response()->json(compact('status', 'book'), 200);
@@ -63,6 +64,14 @@ class BookController extends Controller
             $status = 'error';
             return response()->json(compact('status', 'th'), 200);
         }
+    }
+
+    public function deleteBook($id){
+        $book = Books::findOrFail($id);
+        $book->delete();
+
+        $status = "delete success";
+        return response()->json(compact('status'), 200);
     }
 
 }
