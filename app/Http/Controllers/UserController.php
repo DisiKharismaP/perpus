@@ -78,4 +78,61 @@ class UserController extends Controller
             return response()->json(compact(['user', 'token']), 200);
         }
     }
+
+    //Fungsi logout, menghapus token dari database
+    public function logoutUser(Request $request){
+        if($request->expectsJson()){
+            $isTokenDeleted = $request->User()->currentAccessToken()->delete();
+            return response()->json(compact('isTokenDeleted'), 200);
+        }
+    }
+
+    //Fungsi untuk mendapatkan data user / read user
+    public function getUser($id){
+        $user = User::find($id);
+        return response()->json(compact('user'), 200);
+    }
+
+    //Fungsi untuk mengubah data user / update user
+    //perameternya adalah id dari user yg akan diubah dan request berisi input user
+    public function updateUser($id, Request $request){
+        $user = User::find($id);
+        $input = $request->all();
+
+        if(isset($request->name)){
+            $user->name = $input['name'];
+        }
+
+        if(isset($request->email)){
+            $user->email = $input['email'];
+        }
+
+        //cek apakah file yg diupload itu ada
+        //diketahui dari adanya response dengan key tertentu
+        if($request->has('photo')){
+            if(isset($user->profile_photo_path) || !empty($user->profile_photo_path)){
+                Storage::disk('public')->delete($user->profile_photo_path);
+            }
+            $urlPath = $request->file('photo')->store('image/'.$id, 'public');
+            $user->profile_photo_path = $urlPath;
+        }
+
+        //save ke database
+        $user->save();
+
+        return response()->json(compact('user'), 200);
+    }
+
+    //Fungsi untuk menghapus user / delete user
+    public function deleteUser($id){
+        $user = User::find($id);
+        $result = $user->delete();
+
+        //selain menghapus user dari database, kita perlu juga untuk menghapus gambar user
+        if(isset($user->profile_photo_path) || !empty($user->profile_photo_path)){
+            Storage::disk('public')->delete($user->profile_photo_path);
+        }
+
+        return response()->json(compact('result', 'user'), 200);
+    }
 }
