@@ -24,7 +24,7 @@ class UserController extends Controller
             $data,
             [
                 'name' => 'required|string|max:100',
-                'email' => 'required|string|email|unique:App\Models|user,email',
+                'email' => 'required|string|email',
                 'password' => 'required|string|min:8'
             ]
         );
@@ -45,7 +45,7 @@ class UserController extends Controller
 
         //menampilkan response berisi user dan token
         //200 artinya sukses
-        return response()->json(compact(['user', 'token']), 200);
+        return response()->json(compact('user'), 200);
     }
 
     //Fungsi login user 
