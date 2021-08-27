@@ -132,12 +132,6 @@ class UserController extends Controller
     public function deleteUser($id){
         $user = User::find($id);
         $result = $user->delete();
-
-        //selain menghapus user dari database, kita perlu juga untuk menghapus gambar user
-        if(isset($user->profile_photo_path) || !empty($user->profile_photo_path)){
-            Storage::disk('public')->delete($user->profile_photo_path);
-        }
-
-        return response()->json(compact('result', 'user'), 200);
+        return response()->json(compact('result'), 200);
     }
 }
