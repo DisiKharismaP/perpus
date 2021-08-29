@@ -13,7 +13,7 @@ class Authors extends Model
     protected $fillable = [
         'name',
         'description',
-        'url',
+        'image_url',
     ];
     
 }

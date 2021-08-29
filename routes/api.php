@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -31,3 +32,8 @@ Route::post('logout', [UserController::class, 'logoutUser']);
 Route::get('user/get/{id}', [UserController::class, 'getUser']);
 Route::post('user/update/{id}', [UserController::class, 'updateUser']);
 Route::delete('user/delete/{id}', [UserController::class, 'deleteUser']);
+
+Route::get('authors/get/{id}', [AuthorController::class, 'readAuthor']);
+Route::post('authors/create', [AuthorController::class, 'createAuthor']);
+Route::post('authors/update/{id}', [AuthorController::class, 'updateAuthor']);
+Route::delete('authors/delete/{id}', [AuthorController::class, 'deleteAuthor']);
