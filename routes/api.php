@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -43,3 +44,8 @@ Route::get('publishers/get/{id}', [PublisherController::class, 'readPublisher'])
 Route::post('publishers/create', [PublisherController::class, 'createPublisher']);
 Route::post('publishers/update/{id}', [PublisherController::class, 'updatePublisher']);
 Route::delete('publishers/delete/{id}', [PublisherController::class, 'deletePublisher']);
+
+Route::get('borrows/get/{id}', [BorrowController::class, 'readBorrrow']);
+Route::post('borrows/create', [BorrowController::class, 'createBorrow']);
+Route::post('borrows/update/{id}', [BorrowController::class, 'updateBorrow']);
+Route::delete('borrows/delete/{id}', [BorrowController::class, 'deleteBorrow']);
