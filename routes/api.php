@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,8 @@ Route::get('authors/get/{id}', [AuthorController::class, 'readAuthor']);
 Route::post('authors/create', [AuthorController::class, 'createAuthor']);
 Route::post('authors/update/{id}', [AuthorController::class, 'updateAuthor']);
 Route::delete('authors/delete/{id}', [AuthorController::class, 'deleteAuthor']);
+
+Route::get('publishers/get/{id}', [PublisherController::class, 'readPublisher']);
+Route::post('publishers/create', [PublisherController::class, 'createPublisher']);
+Route::post('publishers/update/{id}', [PublisherController::class, 'updatePublisher']);
+Route::delete('publishers/delete/{id}', [PublisherController::class, 'deletePublisher']);

@@ -17,7 +17,7 @@ class CreatePublisherTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->string('url')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
