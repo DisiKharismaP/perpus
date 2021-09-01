@@ -40,10 +40,10 @@ Route::post('authors/create', [AuthorController::class, 'createAuthor']);
 Route::post('authors/update/{id}', [AuthorController::class, 'updateAuthor']);
 Route::delete('authors/delete/{id}', [AuthorController::class, 'deleteAuthor']);
 
-Route::get('publishers/get/{id}', [PublisherController::class, 'readPublisher']);
-Route::post('publishers/create', [PublisherController::class, 'createPublisher']);
-Route::post('publishers/update/{id}', [PublisherController::class, 'updatePublisher']);
-Route::delete('publishers/delete/{id}', [PublisherController::class, 'deletePublisher']);
+Route::get('publisher/get/{id}', [PublisherController::class, 'readPublisher']);
+Route::post('publisher/create', [PublisherController::class, 'createPublisher']);
+Route::post('publisher/update/{id}', [PublisherController::class, 'updatePublisher']);
+Route::delete('publisher/delete/{id}', [PublisherController::class, 'deletePublisher']);
 
 Route::get('borrows/get/{id}', [BorrowController::class, 'readBorrrow']);
 Route::post('borrows/create', [BorrowController::class, 'createBorrow']);

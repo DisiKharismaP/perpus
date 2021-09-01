@@ -9,6 +9,8 @@ class Publisher extends Model
 {
     use HasFactory;
 
+    protected $table = 'publisher';
+
     //kolom database yg bisa diisi secara massal
     protected $fillable = [
         'name',
